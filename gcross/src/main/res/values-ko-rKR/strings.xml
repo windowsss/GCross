@@ -1,0 +1,15 @@
+<resources>
+    <string name="load_failure">网络请求失败</string>
+    <string name="get_rewards">获得奖励</string>
+    <string name="go_get">去领取</string>
+    <string name="play_game">玩游戏</string>
+    <string name="warm_reminder">温馨提示</string>
+    <string name="get_finish">获得完毕</string>
+    <string name="gem">宝石</string>
+    <string name="gem_charging_station">宝石充电站</string>
+    <string name="continue_the_game">继续游戏</string>
+    <string name="chinese">中文</string>
+    <string name="korean">英文</string>
+    <string name="gem_text">个免费宝石</string>
+    <string name="at_most">最多</string>
+</resources>

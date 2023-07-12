@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3453125" />
+        <entry key="gcross/src/main/res/drawable/pb_1.xml" value="0.227" />
+        <entry key="gcross/src/main/res/layout/activity_gcross.xml" value="0.3453125" />
+        <entry key="gcross/src/main/res/layout/activity_index.xml" value="0.3453125" />
+        <entry key="gcross/src/main/res/layout/activity_web.xml" value="0.3453125" />
+        <entry key="gcross/src/main/res/layout/adapter_quest.xml" value="0.3453125" />
+        <entry key="gcross/src/main/res/layout/fragment_quest_gcross.xml" value="0.3453125" />
+      </map>
+    </option>
+  </component>
+  <component name="EntryPointsManager">
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="org.greenrobot.eventbus.Subscribe" />
+    </list>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
