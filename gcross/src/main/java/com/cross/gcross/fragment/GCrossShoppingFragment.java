@@ -99,6 +99,7 @@ public class GCrossShoppingFragment extends GCrossBaseFragment {
             warmPromptDialog.setData(jsonObject.getString("result"));
             Toast.makeText(getActivity(), jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
             refreshData();
+            refreshDataIndex();
             noticeDialog = warmPromptDialog.create();
             noticeDialog.setCancelable(false);
             noticeDialog.show();
@@ -116,7 +117,17 @@ public class GCrossShoppingFragment extends GCrossBaseFragment {
             e.printStackTrace();
         }
     }
-    private void refreshData(){
+
+    private void refreshDataIndex() {
+        Map<String, String> map = new ArrayMap<>();
+        map.put("gameUserId", GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.GameUserId, "").toString());
+        map.put("gameUserOs", "CROSS_AOS");
+        map.put("gameMediaId", GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.GameMediaId, "").toString());
+        new GCrossHttpUtils(new Gson().toJson(map), GCrossHttpConstant.getLoginGameUser).getLoginGameUser();
+    }
+
+
+    private void refreshData() {
         Map<String, String> map = new ArrayMap<>();
         map.put("gameUserId", GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.GameUserId, "").toString());
         map.put("gameUserOs", "CROSS_AOS");

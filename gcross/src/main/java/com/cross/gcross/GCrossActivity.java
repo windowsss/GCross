@@ -34,7 +34,7 @@ public class GCrossActivity extends AppCompatActivity  {
         getWindow().setStatusBarColor(Color.TRANSPARENT);
         // 设置任务栏的字体颜色
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        if ("korean11".equals(GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.Language, "").toString())) {
+        if ("korean".equals(GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.Language, "").toString())) {
             LanguageUtil.setConfiguration(this, Locale.KOREAN);
         } else {
             LanguageUtil.setConfiguration(this, Locale.SIMPLIFIED_CHINESE);
