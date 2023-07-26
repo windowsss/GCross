@@ -15,11 +15,9 @@ import com.youth.banner.adapter.BannerAdapter;
 import java.util.List;
 
 public class BannerViewAdapter extends BannerAdapter<CrossBannerBean.ResultBean.DataBean, BannerViewAdapter.BannerViewHodler> {
-    private Context context;
 
     public BannerViewAdapter(List<CrossBannerBean.ResultBean.DataBean> banners, Context context) {
         super(banners);
-        this.context = context;
     }
 
     @Override

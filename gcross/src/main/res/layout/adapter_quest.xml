@@ -34,6 +34,7 @@
         android:layout_below="@+id/tvName"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="12dp"
+        android:layout_toStartOf="@+id/rlBtn"
         android:layout_toEndOf="@+id/ivHeadImg"
         android:orientation="horizontal">
 
@@ -58,13 +59,13 @@
             android:paddingTop="2dp"
             android:paddingEnd="8dp"
             android:paddingBottom="2dp"
-            android:text="闲置RPG"
             android:textColor="#ffffffff"
             android:textSize="10sp"
             android:visibility="gone" />
     </LinearLayout>
 
     <RelativeLayout
+        android:id="@+id/rlBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"

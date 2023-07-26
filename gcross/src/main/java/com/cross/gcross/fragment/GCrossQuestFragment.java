@@ -86,7 +86,7 @@ public class GCrossQuestFragment extends GCrossBaseFragment {
         }
         refreshData();
         map = new ArrayMap<>();
-        map.put("gameMediaId", GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.GameMediaId, "").toString());
+        map.put("applicationId", GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.applicationId, "").toString());
         map.put("gameUserOs", "CROSS_AOS");
         new GCrossHttpUtils(new Gson().toJson(map), GCrossHttpConstant.getCrossBanners).getCrossBanners();//获取轮播图
         //游戏介绍
@@ -107,17 +107,18 @@ public class GCrossQuestFragment extends GCrossBaseFragment {
             if ("1".equals(btnStatus)) {
                 //唤醒安装app  跳转到指定页面
                 Intent intent = new Intent();
-                intent.setComponent(new ComponentName(questAdapter.getData().get(position).getGameMediaPackage(), questAdapter.getData().get(position).getGamMediaActivityUrl()));
+                intent.setComponent(new ComponentName(questAdapter.getData().get(position).getGameMediaPackageAos(), questAdapter.getData().get(position).getGamMediaActivityUrlAos()));
                 startActivity(intent);
             } else if ("2".equals(btnStatus)) {
                 map = new ArrayMap<>();
                 map.put("gameUserId", GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.GameUserId, "").toString());
                 map.put("gameUserOs", "CROSS_AOS");
-                map.put("gameMediaId", questAdapter.getData().get(position).getGameMediaId());
+                map.put("applicationId",GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.applicationId, "").toString());
+                map.put("activityId", questAdapter.getData().get(position).getActivityId());
                 new GCrossHttpUtils(new Gson().toJson(map), GCrossHttpConstant.saveCrossGameMediaDiamond).saveCrossGameMediaDiamond();
             } else {
                 //跳转到应用商店指定的app详情页面
-                String marketId = "market://details?id=" + questAdapter.getData().get(position).getGameMediaPackage();
+                String marketId = "market://details?id=" + questAdapter.getData().get(position).getGameMediaPackageAos();
                 Uri uri = Uri.parse(marketId);
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -149,6 +150,8 @@ public class GCrossQuestFragment extends GCrossBaseFragment {
                 WarmReminderDialog.Builder warmPromptDialog = new WarmReminderDialog.Builder(getActivity());
                 warmPromptDialog.setData(jsonObject.getString("result"));
                 refreshData();
+                refreshDataIndex();
+                refreshDataShopping();
                 Dialog noticeDialog = warmPromptDialog.create();
                 noticeDialog.setCancelable(false);
                 noticeDialog.show();
@@ -167,6 +170,22 @@ public class GCrossQuestFragment extends GCrossBaseFragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    private void refreshDataShopping() {
+        Map<String, String> map = new ArrayMap<>();
+        map.put("gameUserId", GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.GameUserId, "").toString());
+        map.put("gameUserOs", "CROSS_AOS");
+        map.put("applicationId", GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.applicationId, "").toString());
+        new GCrossHttpUtils(new Gson().toJson(map), GCrossHttpConstant.getCrossShop).getCrossShop();
+    }
+
+    private void refreshDataIndex() {
+        Map<String, String> map = new ArrayMap<>();
+        map.put("gameUserId", GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.GameUserId, "").toString());
+        map.put("gameUserOs", "CROSS_AOS");
+        map.put("applicationId", GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.applicationId, "").toString());
+        new GCrossHttpUtils(new Gson().toJson(map), GCrossHttpConstant.getCrossShop).getLoginGameUser();
     }
 
     //任务列表

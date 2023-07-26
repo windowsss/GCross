@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../GCrossGithub/app/src/main/res/layout/activity_main.xml" value="0.3453125" />
+        <entry key="../GCrossGithub/gcross/src/main/res/layout/activity_gcross.xml" value="0.3453125" />
+        <entry key="../GCrossGithub/gcross/src/main/res/layout/activity_setting_gcross.xml" value="0.3453125" />
+        <entry key="../GCrossGithub/gcross/src/main/res/layout/activity_web.xml" value="0.3453125" />
+        <entry key="../GCrossGithub/gcross/src/main/res/layout/adapter_quest.xml" value="0.3453125" />
+        <entry key="../GCrossGithub/gcross/src/main/res/layout/fragment_index_gcross.xml" value="0.39739583333333334" />
+        <entry key="../GCrossGithub/gcross/src/main/res/layout/fragment_quest_gcross.xml" value="0.3453125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3453125" />
         <entry key="gcross/src/main/res/drawable/pb_1.xml" value="0.227" />
         <entry key="gcross/src/main/res/layout/activity_gcross.xml" value="0.3453125" />

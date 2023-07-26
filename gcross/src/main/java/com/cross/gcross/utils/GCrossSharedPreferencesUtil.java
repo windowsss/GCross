@@ -15,8 +15,10 @@ public class GCrossSharedPreferencesUtil {
     public static final String TOKEN = "token";
     public static final String Language = "language";//语言
     public static final String GameUserId = "gameUserId";//用户ID
+    public static final String applicationId = "applicationId";//媒体ID
     public static final String GameMediaId = "gameMediaId";//游戏ID
-    public static final String ShopId = "shopId";//商城ID
+    public static final String ISAUTH = "isAuth";//是否授权(1 授权 0 未授权)
+
     /**
      * 初始化SharedPreferencesUtil,只需要初始化一次，建议在Application中初始化
      */

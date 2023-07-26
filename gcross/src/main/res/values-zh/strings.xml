@@ -9,7 +9,9 @@
     <string name="gem_charging_station">宝石充电站</string>
     <string name="continue_the_game">继续游戏</string>
     <string name="chinese">中文</string>
-    <string name="korean">英文</string>
+    <string name="korean">韩文</string>
     <string name="gem_text">个免费宝石</string>
     <string name="at_most">最多</string>
+    <string name="shop">商城</string>
+    <string name="battle">战斗</string>
 </resources>

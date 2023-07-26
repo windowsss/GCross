@@ -14,6 +14,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.cross.gcross.R;
 import com.cross.gcross.bean.CrossGameMediaBean;
+import com.cross.gcross.utils.GCrossSharedPreferencesUtil;
 
 import java.util.List;
 
@@ -26,15 +27,22 @@ public class QuestAdapter extends BaseQuickAdapter<CrossGameMediaBean.ResultBean
     @Override
     protected void convert(@NonNull BaseViewHolder helper, CrossGameMediaBean.ResultBean item) {
         if (item != null) {
-            helper.setText(R.id.tvName, item.getGameMediaName());
-            helper.setText(R.id.tvGameMediaType, item.getGameMediaType());
+            if ("korean".equals(GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.Language, "").toString())) {
+                helper.setText(R.id.tvName, item.getGameMediaNameKo());
+                helper.setText(R.id.tvGameMediaType, item.getGameMediaTypeKo());
+            } else {
+                helper.setText(R.id.tvName, item.getGameMediaNameEn());
+                helper.setText(R.id.tvGameMediaType, item.getGameMediaTypeEn());
+            }
+
+
             ImageView ivHeadImg = helper.getView(R.id.ivHeadImg);
             Glide.with(getContext()).load(item.getGameMediaIcon()).into(ivHeadImg);
             helper.setText(R.id.tvNumber, item.getGameMediaGoodsPrices());
             boolean isInstall;
             PackageManager packageManager = getContext().getPackageManager();
             try {
-                PackageInfo packageInfo = packageManager.getPackageInfo(item.getGameMediaPackage(), 0);
+                PackageInfo packageInfo = packageManager.getPackageInfo(item.getGameMediaPackageAos(), 0);
                 // 应用已安装
                 isInstall = true;
             } catch (PackageManager.NameNotFoundException e) {

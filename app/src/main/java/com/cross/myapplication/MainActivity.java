@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         map.put("gameUserOs", "CROSS_AOS");
         map.put("gameUserPk", "2");
 //            map.put("gameUserName", "啊啊啊");
-//            map.put("gameMediaPackage", packageInfo.packageName);
+//        map.put("gameMediaPackage", packageInfo.packageName);
         map.put("gameMediaPackage", "com.cncsys.blez");
         map.put("gameUserGrade", "20.35");
         map.put("gameMediaIcon", "http://123.249.110.79:8080/jeecg-boot/sys/common/static/temp/qt_1689040494959_1689261898778.png");

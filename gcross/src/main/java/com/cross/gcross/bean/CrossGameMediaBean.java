@@ -53,12 +53,18 @@ public class CrossGameMediaBean {
     public static class ResultBean {
         private String gameMediaId;
         private String gameMediaIcon;
-        private String gameMediaName;
-        private String gameMediaType;
+        private String gameMediaNameKo;
+        private String gameMediaNameEn;
+        private String gameMediaTypeKo;
+        private String gameMediaTypeEn;
         private String gameMediaGoodsPrices;
-        private String gameMediaPackage;
-        private String gamMediaActivityUrl;
+        private String gameMediaPackageAos;
+        private String gameMediaPackageIos;
+        private String gamMediaActivityUrlIos;
+        private String gamMediaActivityUrlAos;
         private boolean receiveFlag;
+        private String activityId;
+        private String activityName;
         private String btnStatus;
 
         public String getBtnStatus() {
@@ -85,20 +91,36 @@ public class CrossGameMediaBean {
             this.gameMediaIcon = gameMediaIcon;
         }
 
-        public String getGameMediaName() {
-            return gameMediaName;
+        public String getGameMediaNameKo() {
+            return gameMediaNameKo;
         }
 
-        public void setGameMediaName(String gameMediaName) {
-            this.gameMediaName = gameMediaName;
+        public void setGameMediaNameKo(String gameMediaNameKo) {
+            this.gameMediaNameKo = gameMediaNameKo;
         }
 
-        public String getGameMediaType() {
-            return gameMediaType;
+        public String getGameMediaNameEn() {
+            return gameMediaNameEn;
         }
 
-        public void setGameMediaType(String gameMediaType) {
-            this.gameMediaType = gameMediaType;
+        public void setGameMediaNameEn(String gameMediaNameEn) {
+            this.gameMediaNameEn = gameMediaNameEn;
+        }
+
+        public String getGameMediaTypeKo() {
+            return gameMediaTypeKo;
+        }
+
+        public void setGameMediaTypeKo(String gameMediaTypeKo) {
+            this.gameMediaTypeKo = gameMediaTypeKo;
+        }
+
+        public String getGameMediaTypeEn() {
+            return gameMediaTypeEn;
+        }
+
+        public void setGameMediaTypeEn(String gameMediaTypeEn) {
+            this.gameMediaTypeEn = gameMediaTypeEn;
         }
 
         public String getGameMediaGoodsPrices() {
@@ -109,20 +131,36 @@ public class CrossGameMediaBean {
             this.gameMediaGoodsPrices = gameMediaGoodsPrices;
         }
 
-        public String getGameMediaPackage() {
-            return gameMediaPackage;
+        public String getGameMediaPackageAos() {
+            return gameMediaPackageAos;
         }
 
-        public void setGameMediaPackage(String gameMediaPackage) {
-            this.gameMediaPackage = gameMediaPackage;
+        public void setGameMediaPackageAos(String gameMediaPackageAos) {
+            this.gameMediaPackageAos = gameMediaPackageAos;
         }
 
-        public String getGamMediaActivityUrl() {
-            return gamMediaActivityUrl;
+        public String getGameMediaPackageIos() {
+            return gameMediaPackageIos;
         }
 
-        public void setGamMediaActivityUrl(String gamMediaActivityUrl) {
-            this.gamMediaActivityUrl = gamMediaActivityUrl;
+        public void setGameMediaPackageIos(String gameMediaPackageIos) {
+            this.gameMediaPackageIos = gameMediaPackageIos;
+        }
+
+        public String getGamMediaActivityUrlIos() {
+            return gamMediaActivityUrlIos;
+        }
+
+        public void setGamMediaActivityUrlIos(String gamMediaActivityUrlIos) {
+            this.gamMediaActivityUrlIos = gamMediaActivityUrlIos;
+        }
+
+        public String getGamMediaActivityUrlAos() {
+            return gamMediaActivityUrlAos;
+        }
+
+        public void setGamMediaActivityUrlAos(String gamMediaActivityUrlAos) {
+            this.gamMediaActivityUrlAos = gamMediaActivityUrlAos;
         }
 
         public boolean isReceiveFlag() {
@@ -131,6 +169,22 @@ public class CrossGameMediaBean {
 
         public void setReceiveFlag(boolean receiveFlag) {
             this.receiveFlag = receiveFlag;
+        }
+
+        public String getActivityId() {
+            return activityId;
+        }
+
+        public void setActivityId(String activityId) {
+            this.activityId = activityId;
+        }
+
+        public String getActivityName() {
+            return activityName;
+        }
+
+        public void setActivityName(String activityName) {
+            this.activityName = activityName;
         }
     }
 }

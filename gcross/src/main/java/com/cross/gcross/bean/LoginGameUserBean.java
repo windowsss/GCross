@@ -53,7 +53,33 @@ public class LoginGameUserBean {
         private String token;
         private String userId;
         private String gameMediaId;
+        private String applicationId;
+        private String gameUserDiamond;
+        private String isAuth;
 
+        public String getIsAuth() {
+            return isAuth;
+        }
+
+        public void setIsAuth(String isAuth) {
+            this.isAuth = isAuth;
+        }
+
+        public String getGameUserDiamond() {
+            return gameUserDiamond;
+        }
+
+        public void setGameUserDiamond(String gameUserDiamond) {
+            this.gameUserDiamond = gameUserDiamond;
+        }
+
+        public String getApplicationId() {
+            return applicationId;
+        }
+
+        public void setApplicationId(String applicationId) {
+            this.applicationId = applicationId;
+        }
 
         public String getGameMediaId() {
             return gameMediaId;

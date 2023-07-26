@@ -56,11 +56,8 @@ public class GameUserBean {
         private String gameUserGrade;
         private String gameUserDiamond;
         private String gameUserExperience;
-        private String shopSumDiamond;
-        private String shopDiamond;
-        private String shopTime;
-        private String shopId;
-        private String gameMediaId;
+        private String sumDiamond;
+        private String applicationId;
 
         public String getGameUserId() {
             return gameUserId;
@@ -110,44 +107,20 @@ public class GameUserBean {
             this.gameUserExperience = gameUserExperience;
         }
 
-        public String getShopSumDiamond() {
-            return shopSumDiamond;
+        public String getSumDiamond() {
+            return sumDiamond;
         }
 
-        public void setShopSumDiamond(String shopSumDiamond) {
-            this.shopSumDiamond = shopSumDiamond;
+        public void setSumDiamond(String sumDiamond) {
+            this.sumDiamond = sumDiamond;
         }
 
-        public String getShopDiamond() {
-            return shopDiamond;
+        public String getApplicationId() {
+            return applicationId;
         }
 
-        public void setShopDiamond(String shopDiamond) {
-            this.shopDiamond = shopDiamond;
-        }
-
-        public String getShopTime() {
-            return shopTime;
-        }
-
-        public void setShopTime(String shopTime) {
-            this.shopTime = shopTime;
-        }
-
-        public String getShopId() {
-            return shopId;
-        }
-
-        public void setShopId(String shopId) {
-            this.shopId = shopId;
-        }
-
-        public String getGameMediaId() {
-            return gameMediaId;
-        }
-
-        public void setGameMediaId(String gameMediaId) {
-            this.gameMediaId = gameMediaId;
+        public void setApplicationId(String applicationId) {
+            this.applicationId = applicationId;
         }
     }
 }

@@ -48,16 +48,12 @@ task androidSourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
 }
 
-
 afterEvaluate {
     publishing {
         publications {
-
-
             def versionName = "1.0.0" // 当前版本依赖库版本号，这个jitpack不会使用到，只是我们开发者自己查看
             def aarName = "release"
             release(MavenPublication) {
-
                 // You can then customize attributes of the publication as shown below.
                 groupId = 'com.croos.gcross' // 这个是依赖库的组 id
                 artifactId = 'gcross' // 依赖库的名称（jitpack 都不会使用到）
@@ -68,7 +64,6 @@ afterEvaluate {
                 artifact(androidSourcesJar)//将源码打包进aar，如果不需要可以去掉
                 artifact(androidJavadocsJar)//将注释打包进aar，如果不需要可以去掉
                 artifact "build/outputs/aar/${projectName}-${aarName}.aar"
-
                 //带上依赖 ，否则会报错
                 pom.withXml {
                     def dependenciesNode = asNode().appendNode('dependencies')

@@ -20,7 +20,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".GCrossActivity"
-            android:exported="false"
+            android:exported="true"
             android:screenOrientation="portrait" />
     </application>
 

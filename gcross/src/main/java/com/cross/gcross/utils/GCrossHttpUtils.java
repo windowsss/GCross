@@ -3,6 +3,7 @@ package com.cross.gcross.utils;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -44,10 +45,11 @@ public class GCrossHttpUtils {
     }
 
     //登录
-    public void loginGameUser(Context context) {
+    public void loginGameUser() {
         call.enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                Log.e("","");
             }
 
             @Override
@@ -58,33 +60,36 @@ public class GCrossHttpUtils {
                     if (resultBean == null || resultBean.getResult() == null) {
                         return;
                     }
+                    //是否授权(1 授权 0 未授权)
+                    GCrossSharedPreferencesUtil.putData(GCrossSharedPreferencesUtil.ISAUTH, resultBean.getResult().getIsAuth());
                     GCrossSharedPreferencesUtil.putData(GCrossSharedPreferencesUtil.TOKEN, resultBean.getResult().getToken());
                     GCrossSharedPreferencesUtil.putData(GCrossSharedPreferencesUtil.GameUserId, resultBean.getResult().getUserId());
                     if (!TextUtils.isEmpty(resultBean.getResult().getGameMediaId())) {
                         GCrossSharedPreferencesUtil.putData(GCrossSharedPreferencesUtil.GameMediaId, resultBean.getResult().getGameMediaId());
                     }
+                    GCrossSharedPreferencesUtil.putData(GCrossSharedPreferencesUtil.applicationId, resultBean.getResult().getApplicationId());
 //                    EventBus.getDefault().post(new EventList.loginGameUser(new Gson().fromJson(responseBody, LoginGameUserBean.class)));
                 }
             }
         });
     }
 
-    //商城免费领取钻石接口
-    public void saveShopUserDiamond() {
-        call.enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-            }
-
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                String responseBody = Objects.requireNonNull(response.body()).string();
-                if (response.code() == 200) {
-                    EventBus.getDefault().post(new EventList.saveShopUserDiamond(responseBody));
-                }
-            }
-        });
-    }
+//    //商城免费领取钻石接口
+//    public void saveShopUserDiamond() {
+//        call.enqueue(new Callback() {
+//            @Override
+//            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+//            }
+//
+//            @Override
+//            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+//                String responseBody = Objects.requireNonNull(response.body()).string();
+//                if (response.code() == 200) {
+//                    EventBus.getDefault().post(new EventList.saveShopUserDiamond(responseBody));
+//                }
+//            }
+//        });
+//    }
 
     //商城列表
     public void getCrossShop() {
@@ -171,20 +176,20 @@ public class GCrossHttpUtils {
         });
     }
 
-    //商城领取免费钻石
-    public void updateShopUserDiamond() {
-        call.enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-            }
-
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                String responseBody = Objects.requireNonNull(response.body()).string();
-                if (response.code() == 200) {
-                    EventBus.getDefault().post(new EventList.updateShopUserDiamond(responseBody));
-                }
-            }
-        });
-    }
+//    //商城领取免费钻石
+//    public void updateShopUserDiamond() {
+//        call.enqueue(new Callback() {
+//            @Override
+//            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+//            }
+//
+//            @Override
+//            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+//                String responseBody = Objects.requireNonNull(response.body()).string();
+//                if (response.code() == 200) {
+//                    EventBus.getDefault().post(new EventList.updateShopUserDiamond(responseBody));
+//                }
+//            }
+//        });
+//    }
 }

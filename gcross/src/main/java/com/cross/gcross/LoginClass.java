@@ -22,6 +22,6 @@ public class LoginClass {
 //        map.put("gameUserGrade", gameUserGrade);
 //        map.put("gameMediaIcon", "http://123.249.110.79:8080/jeecg-boot/sys/common/static/temp/切图_1689040494959.png");
 //        map.put("gameUserOsVersion", GCrossUtils.getSystemVersion());
-        new GCrossHttpUtils(json, GCrossHttpConstant.LOGIN_GAME_USER).loginGameUser(context);
+        new GCrossHttpUtils(json, GCrossHttpConstant.LOGIN_GAME_USER).loginGameUser();
     }
 }

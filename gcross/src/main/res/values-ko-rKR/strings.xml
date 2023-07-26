@@ -1,15 +1,17 @@
 <resources>
-    <string name="load_failure">网络请求失败</string>
-    <string name="get_rewards">获得奖励</string>
-    <string name="go_get">去领取</string>
-    <string name="play_game">玩游戏</string>
-    <string name="warm_reminder">温馨提示</string>
-    <string name="get_finish">获得完毕</string>
-    <string name="gem">宝石</string>
-    <string name="gem_charging_station">宝石充电站</string>
-    <string name="continue_the_game">继续游戏</string>
-    <string name="chinese">中文</string>
-    <string name="korean">英文</string>
-    <string name="gem_text">个免费宝石</string>
-    <string name="at_most">最多</string>
+    <string name="load_failure">네트워크 연결 실패</string>
+    <string name="get_rewards">재화수령</string>
+    <string name="go_get">수령하러 가기</string>
+    <string name="play_game">게임하러 가기</string>
+    <string name="warm_reminder">힌트</string>
+    <string name="get_finish">수령완료</string>
+    <string name="gem">보석</string>
+    <string name="gem_charging_station">충전소</string>
+    <string name="continue_the_game">게임 계속하기</string>
+    <string name="chinese">중국어</string>
+    <string name="korean">한글</string>
+    <string name="gem_text">개 무료 보석</string>
+    <string name="at_most">최대</string>
+    <string name="shop">상점</string>
+    <string name="battle">전투</string>
 </resources>

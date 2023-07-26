@@ -1,17 +1,12 @@
 package com.cross.gcross.fragment;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.ArrayMap;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,7 +16,6 @@ import com.cross.gcross.R;
 import com.cross.gcross.adapter.GCrossShoppingAdapter;
 import com.cross.gcross.base.GCrossBaseFragment;
 import com.cross.gcross.bean.GCrossShoppingListBean;
-import com.cross.gcross.dialog.WarmReminderDialog;
 import com.cross.gcross.utils.EventList;
 import com.cross.gcross.utils.GCrossHttpConstant;
 import com.cross.gcross.utils.GCrossHttpUtils;
@@ -31,8 +25,6 @@ import com.google.gson.Gson;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,9 +35,9 @@ import java.util.Map;
  */
 public class GCrossShoppingFragment extends GCrossBaseFragment {
     private com.cross.gcross.databinding.FragmentShoppingGcrossBinding shoppingBinding;
-    private List<String> stringList = new ArrayList<>();
+    private final List<String> stringList = new ArrayList<>();
     private GCrossShoppingAdapter shoppingAdapter;
-    private Dialog noticeDialog;
+    private CallShoppingListener callListener;
 
     /**
      * 点击切换Fragment会调用
@@ -70,14 +62,20 @@ public class GCrossShoppingFragment extends GCrossBaseFragment {
         shoppingAdapter = new GCrossShoppingAdapter(R.layout.adapter_shopping_gcross, stringList);
         shoppingBinding.rlList.setAdapter(shoppingAdapter);
         shoppingAdapter.setOnItemClickListener((adapter, view, position) -> {
-            Map<String, String> map = new ArrayMap<>();
-            map.put("gameUserId", GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.GameUserId, "").toString());
-            map.put("gameUserOs", "CROSS_AOS");
-            map.put("gameMediaId", GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.GameMediaId, "").toString());
-            map.put("shopId", GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.ShopId, "").toString());
-            new GCrossHttpUtils(new Gson().toJson(map), GCrossHttpConstant.updateShopUserDiamond).updateShopUserDiamond();
+            if (callListener != null) {
+                callListener.startQuestShopping();
+            }
         });
+        refreshDataShopping();
         return shoppingBinding.getRoot();
+    }
+
+    private void refreshDataShopping() {
+        Map<String, String> map = new ArrayMap<>();
+        map.put("gameUserId", GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.GameUserId, "").toString());
+        map.put("gameUserOs", "CROSS_AOS");
+        map.put("applicationId", GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.applicationId, "").toString());
+        new GCrossHttpUtils(new Gson().toJson(map), GCrossHttpConstant.getCrossShop).getCrossShop();
     }
 
     @Override
@@ -89,51 +87,30 @@ public class GCrossShoppingFragment extends GCrossBaseFragment {
         }
     }
 
+    //定义一个回调接口
+    public interface CallShoppingListener {
+        void startQuestShopping();
+    }
 
-    //商城列表领取免费钻石
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void updateShopUserDiamond(EventList.updateShopUserDiamond event) {
-        try {
-            JSONObject jsonObject = new JSONObject(event.response);
-            WarmReminderDialog.Builder warmPromptDialog = new WarmReminderDialog.Builder(getActivity());
-            warmPromptDialog.setData(jsonObject.getString("result"));
-            Toast.makeText(getActivity(), jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-            refreshData();
-            refreshDataIndex();
-            noticeDialog = warmPromptDialog.create();
-            noticeDialog.setCancelable(false);
-            noticeDialog.show();
-            Window window = noticeDialog.getWindow();
-            assert window != null;
-            WindowManager.LayoutParams lp = window.getAttributes();
-            WindowManager wm = (WindowManager) getActivity().getSystemService(Context.WINDOW_SERVICE);
-            int height = wm.getDefaultDisplay().getHeight();
-            int b = height - (height / 2);
-            lp.gravity = Gravity.CENTER;
-            lp.width = ViewGroup.LayoutParams.MATCH_PARENT;//宽高可设置具体大小
-            lp.height = b;
-            noticeDialog.getWindow().setAttributes(lp);
-        } catch (JSONException e) {
-            e.printStackTrace();
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof CallShoppingListener) {
+            callListener = (CallShoppingListener) context; // 2.2 获取到宿主activity并赋值
+        } else {
+            throw new IllegalArgumentException("activity must implements FragmentInteraction");
         }
     }
 
-    private void refreshDataIndex() {
-        Map<String, String> map = new ArrayMap<>();
-        map.put("gameUserId", GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.GameUserId, "").toString());
-        map.put("gameUserOs", "CROSS_AOS");
-        map.put("gameMediaId", GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.GameMediaId, "").toString());
-        new GCrossHttpUtils(new Gson().toJson(map), GCrossHttpConstant.getLoginGameUser).getLoginGameUser();
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
-
-    private void refreshData() {
-        Map<String, String> map = new ArrayMap<>();
-        map.put("gameUserId", GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.GameUserId, "").toString());
-        map.put("gameUserOs", "CROSS_AOS");
-        map.put("gameMediaId", GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.GameMediaId, "").toString());
-        map.put("shopId", GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.ShopId, "").toString());
-        new GCrossHttpUtils(new Gson().toJson(map), GCrossHttpConstant.getCrossShop).getCrossShop();
+    @Override
+    public void onStop() {
+        super.onStop();
     }
 
     //商城列表
