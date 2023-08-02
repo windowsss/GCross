@@ -186,7 +186,8 @@
 -keepclasseswithmembernames class * {
     native <methods>;
 }
--keep class com.cross.gcross.utils.** { *; }
+-keep class com.cross.gcross.utils.LoginClass.** { *; }
+-keep class com.cross.gcross.utils.GCrossUtils.** { *; }
 -keep public class * extends android.view.View{
     *** get*();
     void set*(***);
