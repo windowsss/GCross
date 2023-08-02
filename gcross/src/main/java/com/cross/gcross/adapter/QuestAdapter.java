@@ -15,7 +15,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.cross.gcross.R;
 import com.cross.gcross.bean.CrossGameMediaBean;
-import com.cross.gcross.utils.GCrossSharedPreferencesUtil;
+import com.cross.gcross.login.GCrossSharedPreferencesUtil;
 
 import java.util.List;
 

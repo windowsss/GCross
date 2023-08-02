@@ -15,7 +15,7 @@ import com.cross.gcross.databinding.ActivityGcrossBinding;
 import com.cross.gcross.fragment.GCrossIndexFragment;
 import com.cross.gcross.fragment.GCrossQuestFragment;
 import com.cross.gcross.fragment.GCrossShoppingFragment;
-import com.cross.gcross.utils.GCrossSharedPreferencesUtil;
+import com.cross.gcross.login.GCrossSharedPreferencesUtil;
 import com.cross.gcross.utils.LanguageUtil;
 
 import java.util.ArrayList;

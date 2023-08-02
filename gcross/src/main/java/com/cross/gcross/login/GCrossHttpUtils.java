@@ -5,13 +5,11 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.cross.gcross.GCrossConstants;
 import com.cross.gcross.bean.CrossBannerBean;
 import com.cross.gcross.bean.CrossGameMediaBean;
 import com.cross.gcross.bean.GCrossShoppingListBean;
 import com.cross.gcross.bean.GameUserBean;
 import com.cross.gcross.bean.LoginGameUserBean;
-import com.cross.gcross.utils.GCrossSharedPreferencesUtil;
 import com.google.gson.Gson;
 
 import org.greenrobot.eventbus.EventBus;
@@ -35,7 +33,7 @@ public class GCrossHttpUtils {
         MediaType mediaType = MediaType.parse("application/json");
         RequestBody requestBody = RequestBody.create(mediaType, json);
         Request request = new Request.Builder()
-                .url(GCrossConstants.API_BASIC_URL_PHP + url)
+                .url(url)
                 .post(requestBody)
                 .header("token", GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.TOKEN, "").toString())
                 .build();

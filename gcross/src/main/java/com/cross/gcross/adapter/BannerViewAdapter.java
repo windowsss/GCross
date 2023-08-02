@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.cross.gcross.bean.CrossBannerBean;
-import com.cross.gcross.utils.GCrossSharedPreferencesUtil;
+import com.cross.gcross.login.GCrossSharedPreferencesUtil;
 import com.youth.banner.adapter.BannerAdapter;
 
 import java.util.List;

@@ -6,7 +6,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.cross.gcross.databinding.ActivitySettingGcrossBinding;
-import com.cross.gcross.utils.GCrossSharedPreferencesUtil;
+import com.cross.gcross.login.GCrossSharedPreferencesUtil;
 import com.cross.gcross.utils.LanguageUtil;
 
 import java.util.Locale;

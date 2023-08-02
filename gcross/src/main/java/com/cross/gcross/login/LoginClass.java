@@ -3,7 +3,6 @@ package com.cross.gcross.login;
 import android.content.Context;
 
 import com.cross.gcross.utils.GCrossHttpConstant;
-import com.cross.gcross.utils.GCrossSharedPreferencesUtil;
 import com.tencent.mmkv.MMKV;
 
 public class LoginClass {

@@ -28,7 +28,7 @@ import com.cross.gcross.utils.BrightnessUtils;
 import com.cross.gcross.login.EventList;
 import com.cross.gcross.utils.GCrossHttpConstant;
 import com.cross.gcross.login.GCrossHttpUtils;
-import com.cross.gcross.utils.GCrossSharedPreferencesUtil;
+import com.cross.gcross.login.GCrossSharedPreferencesUtil;
 import com.google.gson.Gson;
 
 import org.greenrobot.eventbus.EventBus;
