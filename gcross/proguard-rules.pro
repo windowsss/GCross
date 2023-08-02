@@ -118,9 +118,9 @@
 
 -keep class com.fasterxml.jackson.**{*;}                                    #过滤jackson-core-2.1.4.jar等
 
--dontwarn com.lidroid.xutils.**                                             #去掉警告
--keep class com.lidroid.xutils.**{*;}                                       #过滤xUtils-2.6.14.jar
--keep class * extends java.lang.annotation.Annotation{*;}                   #这是xUtils文档中提到的过滤掉注解
+#-dontwarn com.lidroid.xutils.**                                             #去掉警告
+#-keep class com.lidroid.xutils.**{*;}                                       #过滤xUtils-2.6.14.jar
+#-keep class * extends java.lang.annotation.Annotation{*;}                   #这是xUtils文档中提到的过滤掉注解
 
 -dontwarn com.baidu.**                                                      #去掉警告
 -dontwarn com.baidu.mapapi.**
@@ -186,7 +186,7 @@
 -keepclasseswithmembernames class * {
     native <methods>;
 }
-
+-keep class com.cross.gcross.utils.** { *; }
 -keep public class * extends android.view.View{
     *** get*();
     void set*(***);
@@ -227,58 +227,11 @@ public <init>(org.json.JSONObject);
  private <fields>;
 }
 
-#不混淆资源类
--keep public class **.R$*{
-   public static <fields>;
-}
+##不混淆资源类
+#-keep public class **.R$*{
+#   public static <fields>;
+#}
 
-# 友盟推送功能需要的混淆规则
--dontwarn com.umeng.**
--dontwarn com.taobao.**
--dontwarn anet.channel.**
--dontwarn anetwork.channel.**
--dontwarn org.android.**
--dontwarn org.apache.thrift.**
--dontwarn com.xiaomi.**
--dontwarn com.huawei.**
--dontwarn com.meizu.**
--keepattributes *Annotation*
--keep class com.taobao.** {*;}
--keep class org.android.** {*;}
--keep class anet.channel.** {*;}
--keep class com.umeng.** {*;}
--keep class com.xiaomi.** {*;}
--keep class com.huawei.** {*;}
--keep class com.meizu.** {*;}
--keep class org.apache.thrift.** {*;}
--keep class com.alibaba.sdk.android.**{*;}
--keep class com.ut.**{*;}
--keep class com.ta.**{*;}
-
-#个推
--dontwarn com.getui.**
--keep class com.getui.**{*;}
-
-#银联
-#-libraryjars libs/arm64-v8a/libentryexpro.so
-#-libraryjars libs/arm64-v8a/libuptsmaddon.so
-#-libraryjars libs/arm64-v8a/libuptsmaddonmi.so
-#
-#-libraryjars libs/armeabi/libentryexpro.so
-#-libraryjars libs/armeabi/libuptsmaddon.so
-#-libraryjars libs/armeabi/libuptsmaddonmi.so
-#
-#-libraryjars libs/armeabi-v7a/libentryexpro.so
-#-libraryjars libs/armeabi-v7a/libuptsmaddon.so
-#-libraryjars libs/armeabi-v7a/libuptsmaddonmi.so
-#
-#-libraryjars libs/x86/libentryexpro.so
-#-libraryjars libs/x86/libuptsmaddon.so
-#-libraryjars libs/x86/libuptsmaddonmi.so
-#
-#-libraryjars libs/x86_64/libentryexpro.so
-#-libraryjars libs/x86_64/libuptsmaddon.so
-#-libraryjars libs/x86_64/libuptsmaddonmi.so
 
 -keep  public class java.util.HashMap {
 	public <methods>;

@@ -32,9 +32,8 @@ public class GCrossSharedPreferencesUtil {
      *
      * @param key   键
      * @param value 需要保存的数据
-     * @return 保存结果
      */
-    public static boolean putData(String key, Object value) {
+    public static void putData(String key, Object value) {
         boolean result;
         String type = value.getClass().getSimpleName();
         try {
@@ -65,7 +64,6 @@ public class GCrossSharedPreferencesUtil {
             result = false;
             e.printStackTrace();
         }
-        return result;
     }
 
     public static void remove(String... keys) {
