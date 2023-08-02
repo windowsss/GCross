@@ -1,13 +1,10 @@
 package com.cross.gcross.utils;
 
-import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.cross.gcross.GCrossActivity;
 import com.cross.gcross.GCrossConstants;
 import com.cross.gcross.bean.CrossBannerBean;
 import com.cross.gcross.bean.CrossGameMediaBean;
