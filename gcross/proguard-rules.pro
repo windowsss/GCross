@@ -188,6 +188,8 @@
     native <methods>;
 }
 -keep class com.cross.gcross.login.** { *; }
+-keep class com.cross.gcross.bean.** { *; }
+
 -keep public class * extends android.view.View{
     *** get*();
     void set*(***);
