@@ -1,4 +1,4 @@
-package com.cross.gcross.utils;
+package com.cross.gcross.login;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -11,6 +11,7 @@ import com.cross.gcross.bean.CrossGameMediaBean;
 import com.cross.gcross.bean.GCrossShoppingListBean;
 import com.cross.gcross.bean.GameUserBean;
 import com.cross.gcross.bean.LoginGameUserBean;
+import com.cross.gcross.utils.GCrossSharedPreferencesUtil;
 import com.google.gson.Gson;
 
 import org.greenrobot.eventbus.EventBus;

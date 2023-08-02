@@ -1,4 +1,4 @@
-package com.cross.gcross.utils;
+package com.cross.gcross.login;
 
 import com.cross.gcross.bean.CrossBannerBean;
 import com.cross.gcross.bean.CrossGameMediaBean;
@@ -7,23 +7,6 @@ import com.cross.gcross.bean.GameUserBean;
 import com.cross.gcross.bean.LoginGameUserBean;
 
 public class EventList {
-    //登录
-    public static class loginGameUser {
-        public LoginGameUserBean loginGameUserBean;
-
-        loginGameUser(LoginGameUserBean loginGameUserBean) {
-            this.loginGameUserBean = loginGameUserBean;
-        }
-    }
-
-//    //首页间隔多长时间赠送钻石接口
-//    public static class saveShopUserDiamond {
-//        public String response;
-//
-//        saveShopUserDiamond(String response) {
-//            this.response = response;
-//        }
-//    }
 
     //商城列表
     public static class getCrossShop {

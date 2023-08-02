@@ -16,9 +16,9 @@ import com.cross.gcross.R;
 import com.cross.gcross.adapter.GCrossShoppingAdapter;
 import com.cross.gcross.base.GCrossBaseFragment;
 import com.cross.gcross.bean.GCrossShoppingListBean;
-import com.cross.gcross.utils.EventList;
+import com.cross.gcross.login.EventList;
 import com.cross.gcross.utils.GCrossHttpConstant;
-import com.cross.gcross.utils.GCrossHttpUtils;
+import com.cross.gcross.login.GCrossHttpUtils;
 import com.cross.gcross.utils.GCrossSharedPreferencesUtil;
 import com.google.gson.Gson;
 
