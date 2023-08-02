@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.util.ArrayMap;
 
 import com.cross.gcross.GCrossActivity;
-import com.cross.gcross.utils.LoginClass;
+import com.cross.gcross.login.LoginClass;
 import com.cross.gcross.utils.GCrossUtils;
 import com.google.gson.Gson;
 
