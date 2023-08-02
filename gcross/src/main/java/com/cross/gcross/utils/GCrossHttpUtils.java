@@ -33,10 +33,15 @@ public class GCrossHttpUtils {
         OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
         MediaType mediaType = MediaType.parse("application/json");
         RequestBody requestBody = RequestBody.create(mediaType, json);
+        String timeMillis = GCrossUtils.getCurrentTime();
+        String md51 = new Md5().GetMD5Code(timeMillis + "gcross").substring(3);
+        String md5 = GCrossUtils.getRandomString2(3) + md51.substring(0, md51.length() - 3) + GCrossUtils.getRandomString2(3);
         Request request = new Request.Builder()
                 .url(url)
                 .post(requestBody)
                 .header("token", GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.TOKEN, "").toString())
+                .header("sign", md5.toUpperCase())
+                .header("timestamp", timeMillis)
                 .build();
         call = okHttpClient.newCall(request);
     }
@@ -46,7 +51,6 @@ public class GCrossHttpUtils {
         call.enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                Log.e("", "");
             }
 
             @Override
@@ -66,6 +70,8 @@ public class GCrossHttpUtils {
                     }
                     GCrossSharedPreferencesUtil.putData(GCrossSharedPreferencesUtil.applicationId, resultBean.getResult().getApplicationId());
 //                    EventBus.getDefault().post(new EventList.loginGameUser(new Gson().fromJson(responseBody, LoginGameUserBean.class)));
+                } else {
+
                 }
             }
         });
