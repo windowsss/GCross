@@ -1,4 +1,4 @@
-package com.cross.gcross.login;
+package com.cross.gcross.utils;
 
 import com.cross.gcross.bean.CrossBannerBean;
 import com.cross.gcross.bean.CrossGameMediaBean;

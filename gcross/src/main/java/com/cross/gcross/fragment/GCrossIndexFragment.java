@@ -25,9 +25,9 @@ import com.cross.gcross.base.GCrossBaseFragment;
 import com.cross.gcross.bean.GameUserBean;
 import com.cross.gcross.databinding.FragmentIndexGcrossBinding;
 import com.cross.gcross.utils.BrightnessUtils;
-import com.cross.gcross.login.EventList;
+import com.cross.gcross.utils.EventList;
 import com.cross.gcross.utils.GCrossHttpConstant;
-import com.cross.gcross.login.GCrossHttpUtils;
+import com.cross.gcross.utils.GCrossHttpUtils;
 import com.cross.gcross.login.GCrossSharedPreferencesUtil;
 import com.google.gson.Gson;
 
