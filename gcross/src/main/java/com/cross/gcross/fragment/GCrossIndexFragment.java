@@ -17,6 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.cross.gcross.GCrossSettingActivity;
 import com.cross.gcross.R;
 import com.cross.gcross.base.GCrossBaseFragment;
@@ -104,7 +106,14 @@ public class GCrossIndexFragment extends GCrossBaseFragment {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getGameUser(EventList.getGameUser event) {
         resultBean = event.gameUserBean.getResult();
-        Glide.with(requireActivity()).load(resultBean.getGameUserIcon()).into(indexBinding.ivHeadImg);//头像
+//        Glide.with(requireActivity()).load(resultBean.getGameUserIcon()).into(indexBinding.ivHeadImg);//头像
+        Glide.with(this)
+                .load(resultBean.getGameUserIcon())
+                .apply(new RequestOptions()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL))
+                .into(indexBinding.ivHeadImg);
+
+
         indexBinding.tvGameUserGrade.setText(new StringBuffer("LV.").append(resultBean.getGameUserGrade()));//等级
         indexBinding.tvGameUserDiamond.setText(resultBean.getGameUserDiamond());//宝石余额
         indexBinding.tvShopSumDiamond.setText(new StringBuffer(getResources().getString(R.string.at_most)).append(resultBean.getSumDiamond()).append(getResources().getString(R.string.gem_text)));
@@ -120,13 +129,16 @@ public class GCrossIndexFragment extends GCrossBaseFragment {
     public void startRefreshUserList() {
         if (refreshHandler != null) {
             refreshHandler.removeMessages(RefreshHandler.WHAT_REFRESH);
-            refreshHandler.sendEmptyMessageAtTime(RefreshHandler.WHAT_REFRESH, getNextTime());
+            refreshHandler.sendEmptyMessageAtTime(RefreshHandler.WHAT_REFRESH, getNextTime(60000));
         }
     }
 
-    private long getNextTime() {
+    private long getNextTime(int time) {
         long now = SystemClock.uptimeMillis();
-        return now + 10000000 + -now % 1000;
+        if (time < 1000) {
+            return now + time;
+        }
+        return now + time + -now % 1000;
     }
 
     @SuppressLint("HandlerLeak")

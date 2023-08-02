@@ -173,6 +173,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_toEndOf="@+id/ivHeadImg"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:textColor="#ffffffff"
                 android:textSize="20sp"
                 android:textStyle="bold" />

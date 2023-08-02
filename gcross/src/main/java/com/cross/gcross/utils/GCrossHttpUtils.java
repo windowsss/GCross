@@ -49,7 +49,7 @@ public class GCrossHttpUtils {
         call.enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                Log.e("","");
+                Log.e("", "");
             }
 
             @Override
@@ -57,7 +57,7 @@ public class GCrossHttpUtils {
                 String responseBody = Objects.requireNonNull(response.body()).string();
                 if (response.code() == 200) {
                     LoginGameUserBean resultBean = new Gson().fromJson(responseBody, LoginGameUserBean.class);
-                    if (resultBean == null || resultBean.getResult() == null) {
+                    if (resultBean == null || resultBean.getResult() == null || "0".equals(resultBean.getResult().getIsAuth())) {
                         return;
                     }
                     //是否授权(1 授权 0 未授权)

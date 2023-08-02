@@ -113,8 +113,9 @@ public class GCrossQuestFragment extends GCrossBaseFragment {
                 map = new ArrayMap<>();
                 map.put("gameUserId", GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.GameUserId, "").toString());
                 map.put("gameUserOs", "CROSS_AOS");
-                map.put("applicationId",GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.applicationId, "").toString());
+                map.put("applicationId", questAdapter.getData().get(position).getApplicationId() );
                 map.put("activityId", questAdapter.getData().get(position).getActivityId());
+                map.put("gameMediaId", questAdapter.getData().get(position).getGameMediaId());
                 new GCrossHttpUtils(new Gson().toJson(map), GCrossHttpConstant.saveCrossGameMediaDiamond).saveCrossGameMediaDiamond();
             } else {
                 //跳转到应用商店指定的app详情页面
@@ -215,7 +216,7 @@ public class GCrossQuestFragment extends GCrossBaseFragment {
         Map<String, String> map = new ArrayMap<>();
         map.put("gameUserId", GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.GameUserId, "").toString());
         map.put("gameUserOs", "CROSS_AOS");
-//        map.put("gameMediaId", GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.GameMediaId, "").toString());
+        map.put("applicationId", GCrossSharedPreferencesUtil.getData(GCrossSharedPreferencesUtil.applicationId, "").toString());
         new GCrossHttpUtils(new Gson().toJson(map), GCrossHttpConstant.getCrossGameMedia).getCrossGameMedia();
     }
 

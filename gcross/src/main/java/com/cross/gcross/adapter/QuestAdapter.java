@@ -1,6 +1,7 @@
 package com.cross.gcross.adapter;
 
 
+import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.widget.ImageView;
@@ -40,15 +41,16 @@ public class QuestAdapter extends BaseQuickAdapter<CrossGameMediaBean.ResultBean
             Glide.with(getContext()).load(item.getGameMediaIcon()).into(ivHeadImg);
             helper.setText(R.id.tvNumber, item.getGameMediaGoodsPrices());
             boolean isInstall;
-            PackageManager packageManager = getContext().getPackageManager();
-            try {
-                PackageInfo packageInfo = packageManager.getPackageInfo(item.getGameMediaPackageAos(), 0);
-                // 应用已安装
-                isInstall = true;
-            } catch (PackageManager.NameNotFoundException e) {
-                // 应用未安装
-                isInstall = false;
-            }
+//            PackageManager packageManager = getContext().getPackageManager();
+//            try {
+//                PackageInfo packageInfo = packageManager.getPackageInfo(item.getGameMediaPackageAos(), 0);
+//                // 应用已安装
+//                isInstall = true;
+//            } catch (PackageManager.NameNotFoundException e) {
+//                // 应用未安装
+//                isInstall = false;
+//            }
+            isInstall = isInstall(getContext(), item.getGameMediaPackageAos());
             //如果安装了应用 并且也领取奖励了 显示玩游戏
             if (isInstall && item.isReceiveFlag()) {
                 item.setBtnStatus("1");
@@ -65,6 +67,19 @@ public class QuestAdapter extends BaseQuickAdapter<CrossGameMediaBean.ResultBean
                 helper.setImageResource(R.id.ivBackGround, R.mipmap.btn_blue);
             }
         }
+    }
+
+    private boolean isInstall(Context context, String packageName) {
+        final PackageManager packageManager = context.getPackageManager();
+        // 获取所有已安装程序的包信息
+        List<PackageInfo> pinfo = packageManager.getInstalledPackages(0);
+        for (int i = 0; i < pinfo.size(); i++) {
+            // 循环判断是否存在指定包名
+            if (pinfo.get(i).packageName.equalsIgnoreCase(packageName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public QuestAdapter(@LayoutRes int layoutResId, @Nullable List<CrossGameMediaBean.ResultBean> dataBeanList) {

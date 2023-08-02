@@ -63,9 +63,18 @@ public class CrossGameMediaBean {
         private String gamMediaActivityUrlIos;
         private String gamMediaActivityUrlAos;
         private boolean receiveFlag;
+        private String applicationId;
         private String activityId;
         private String activityName;
         private String btnStatus;
+
+        public String getApplicationId() {
+            return applicationId;
+        }
+
+        public void setApplicationId(String applicationId) {
+            this.applicationId = applicationId;
+        }
 
         public String getBtnStatus() {
             return btnStatus;
