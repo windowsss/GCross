@@ -59,6 +59,8 @@ public class GCrossHttpUtils {
                 if (response.code() == 200) {
                     LoginGameUserBean resultBean = new Gson().fromJson(responseBody, LoginGameUserBean.class);
                     if (resultBean == null || resultBean.getResult() == null || "0".equals(resultBean.getResult().getIsAuth())) {
+                        //是否授权(1 授权 0 未授权)
+                        GCrossSharedPreferencesUtil.putData(GCrossSharedPreferencesUtil.ISAUTH, "0");
                         return;
                     }
                     //是否授权(1 授权 0 未授权)
