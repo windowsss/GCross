@@ -10,6 +10,7 @@ import android.util.ArrayMap;
 
 import com.cross.gcross.GCrossActivity;
 import com.cross.gcross.login.LoginClass;
+import com.cross.gcross.utils.DeviceIdUtils;
 import com.cross.gcross.utils.GCrossUtils;
 import com.google.gson.Gson;
 
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         }
         Map<String, String> map = new ArrayMap<>();
         map.put("gameUserOs", "CROSS_AOS");
-        map.put("gameUserPk", "2");
+        map.put("gameUserPk", DeviceIdUtils.getDeviceId(this));
 //            map.put("gameUserName", "啊啊啊");
 //        map.put("gameMediaPackage", packageInfo.packageName);
         map.put("gameMediaPackage", "com.cncsys.blez");
